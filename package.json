@@ -1,0 +1,17 @@
+{
+  "name": "@augustsson/width-modifier",
+  "version": "0.0.1",
+  "description": "Script to listen to all elements implementing the property width-modifier to check for width",
+  "main": "./width-modifier.js",
+  "files": [
+    "/width-modifier.js"
+  ],
+  "scripts": {},
+  "author": "Thomas <thomas@understandit.se>",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
