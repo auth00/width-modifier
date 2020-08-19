@@ -1,19 +1,24 @@
 {
   "name": "@augustsson/width-modifier",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Script to listen to all elements implementing the property width-modifier to check for width",
-  "main": "./width-modifier.js",
+  "main": "./dist/width-modifier.js",
   "files": [
-    "/width-modifier.js"
+    "./dist/width-modifier.js"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "babel src -d dist"
+  },
   "author": "Thomas <thomas@understandit.se>",
   "license": "MIT",
   "directories": {
     "example": "example"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.udev.se:open-source/width-modifier.git"

@@ -110,7 +110,7 @@ function updateClasses(node, contentRect) {
     return;
   }
 
-  breakpoints = nodesStyle.get(node).getPropertyValue('--width-modifier');
+  const breakpoints = nodesStyle.get(node).getPropertyValue('--width-modifier');
 
   if(!breakpoints) {
     return;
