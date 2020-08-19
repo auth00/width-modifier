@@ -3,6 +3,7 @@
 }
 .my-component--medium {
   background-color: #888;
+  padding: 10px;
 }
 .my-component--dark {
   background-color: #333;
