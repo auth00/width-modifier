@@ -1,10 +1,11 @@
 {
   "name": "@augustsson/width-modifier",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Script to listen to all elements implementing the property width-modifier to check for width",
   "main": "./dist/width-modifier.js",
   "files": [
-    "./dist/width-modifier.js"
+    "/src",
+    "/dist"
   ],
   "scripts": {
     "build": "babel src -d dist"
