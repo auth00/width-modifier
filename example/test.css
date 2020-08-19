@@ -8,5 +8,5 @@
   background-color: #333;
 }
 .example2b {
-  --width-modifier: my-component--light:0 my-component--medium:200 my-component--dark:500;
+  --width-modifier: my-component--light|0|150 my-component--medium|150|450 my-component--dark|450;
 }

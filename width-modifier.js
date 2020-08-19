@@ -11,7 +11,7 @@
 
 (function(document) {
 
-const PROP = 'width-modifier';
+const CLASS = 'width-modifier';
 
 /*
  * Keeps track of references to nodes style object to minimize calls to getComputedStyle
@@ -27,13 +27,20 @@ const mo = new MutationObserver(changes => {
       if(node.nodeType != 1) {
         return;
       }
-      if(!node.hasAttribute(PROP)) {
+      
+      if(!node.classList.contains(CLASS)) {
         return;
       }
-      ro.observe(node);
       ns.set(node, getComputedStyle(node));
+      ro.observe(node);
     });
     change.removedNodes.forEach(node => {
+      if(node.nodeType != 1) {
+        return;
+      }
+      if(!node.classList.contains(CLASS)) {
+        return;
+      }
       ro.unobserve(node);
       ns.delete(node); 
     });
@@ -47,12 +54,10 @@ const ro = new ResizeObserver(entries => {
   });
 });
 
-function updateClasses(node, contentRect) {
-  if(typeof contentRect == 'undefined') {
-    contentRect = node.getBoundingClientRect();
-  }
+function updateClasses(node) {
+  contentRect = node.getBoundingClientRect();
 
-  breakpoints = ns.get(node).getPropertyValue('--' + PROP);
+  breakpoints = ns.get(node).getPropertyValue('--' + CLASS);
 
   if(!breakpoints) {
     return;
@@ -60,16 +65,26 @@ function updateClasses(node, contentRect) {
 
   // Update the matching breakpoints on the observed element.
   breakpoints.trim().split(' ').map(breakpoint => {
-    return breakpoint.split(':');
+    return breakpoint.split('|');
   }).forEach(breakpoint => {
     const className = breakpoint[0];
-    const minWidth = breakpoint[1];
-    if (contentRect.width >= minWidth) {
+    const minWidth = breakpoint.length > 1 ? parseFloat(breakpoint[1]) : 0;
+    const maxWidth = breakpoint.length > 2 ? parseFloat(breakpoint[2]) : 99999;
+    if (contentRect.width >= minWidth && contentRect.width < maxWidth) {
       node.classList.add(className);
     } else {
       node.classList.remove(className);
     }
   });
+}
+
+/*
+ * Parse over the current element tree to handle any pre-existing matching nodes
+ */
+const elements = document.getElementsByClassName(CLASS);
+for (var i = 0; i < elements.length; i++) {
+  ns.set(elements[i], getComputedStyle(elements[i]));
+  ro.observe(elements[i]);
 }
 
 })(document);
