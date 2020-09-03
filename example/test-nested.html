@@ -1,0 +1,42 @@
+<html>
+<head>
+  <script async src="../dist/width-modifier.js"></script>
+  <style>
+    .width-modifier {
+      --width-modifier: '';
+    }
+    .grid {
+      --columns: 1;
+      --width-modifier: grid-2 0 500, grid-4 500;
+       display: grid;
+       grid-template: auto / repeat(var(--columns), 1fr);
+    }
+    .grid.grid-2 {
+      --columns: 2;
+    }
+    .grid.grid-4 {
+      --columns: 4;
+    }
+    .item {
+      --background-color: yellow;
+      --width-modifier: item-narrow 0 200, item-wide 200;
+      background-color: var(--background-color);
+    }
+    .item.item-narrow {
+      --background-color: orange;
+    }
+    .item.item-wide {
+      --background-color: red;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="grid width-modifier">
+    <div class="item width-modifier">ITEM A</div>
+    <div class="item width-modifier">ITEM B</div>
+    <div class="item width-modifier">ITEM C</div>
+    <div class="item width-modifier">ITEM D</div>
+  </div>
+</body>
+</html>

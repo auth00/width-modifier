@@ -107,7 +107,7 @@ function untrackNode(node) {
 
 function updateClasses(node, contentRect) {
   if(recentChanges.has(node)) {
-    return;
+    //return; // This prevents nested width-modifiers to apply correctly on load, TODO: investigate
   }
 
   const breakpoints = nodesStyle.get(node).getPropertyValue('--width-modifier');

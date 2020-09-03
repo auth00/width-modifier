@@ -1,6 +1,6 @@
 {
   "name": "@augustsson/width-modifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Script to listen to all elements implementing the property width-modifier to check for width",
   "main": "./dist/width-modifier.js",
   "files": [
