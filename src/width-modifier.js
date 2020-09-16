@@ -49,6 +49,12 @@ const mo = new MutationObserver(changes => {
       if(node.nodeType != 1) {
         return;
       }
+
+      const elements = node.getElementsByClassName('width-modifier');
+      for (var i = 0; i < elements.length; i++) {
+        trackNode(elements[i]);
+      }
+
       if(!node.classList.contains('width-modifier')) {
         return;
       }
