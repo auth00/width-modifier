@@ -1,6 +1,6 @@
 {
   "name": "@augustsson/width-modifier",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Script to listen to all elements implementing the property width-modifier to check for width",
   "main": "./dist/width-modifier.js",
   "files": [
@@ -22,6 +22,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.udev.se:open-source/width-modifier.git"
+    "url": "git@github.com:auth00/width-modifier.git"
   }
 }
